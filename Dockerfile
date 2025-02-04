@@ -26,5 +26,5 @@ ENV PATH="/code/.venv/bin:$PATH"
 RUN useradd -m appuser
 USER appuser
 
-WORKDIR 
+WORKDIR /
 CMD ["python3", "src/main.py"]
