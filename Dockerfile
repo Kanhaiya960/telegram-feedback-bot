@@ -27,4 +27,4 @@ RUN useradd -m appuser
 USER appuser
 
 WORKDIR /code/app
-CMD ["python3", "-m", "src"]
+CMD ["python3", "src/main.py"]
