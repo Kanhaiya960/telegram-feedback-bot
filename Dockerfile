@@ -26,10 +26,5 @@ ENV PATH="/code/.venv/bin:$PATH"
 RUN useradd -m appuser
 USER appuser
 
-COPY . /app
-WORKDIR /app
-
-# Set Python path so it recognizes `src`
-ENV PYTHONPATH=/app
-
-CMD ["python3", "src/main.py"]
+WORKDIR /code/app
+CMD ["python3", "-m", "src"]
