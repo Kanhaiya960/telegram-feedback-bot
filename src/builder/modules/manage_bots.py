@@ -44,7 +44,7 @@ async def manage_bots(_: Client, update: CallbackQuery, i18n: Plate) -> None:
                 ]
                 for bot in user_bots
             ]
-            + [[InlineKeyboardButton(f"{i18n('back_to_main_menu')}", callback_data='main')]]
+            + [[InlineKeyboardButton(f'{i18n("back_to_main_menu")}', callback_data='main')]]
         ),
     )
 
@@ -62,38 +62,33 @@ async def show_bot_manage_options(_: Client, update: CallbackQuery, i18n: Plate)
         i18n('select_manage_option'),
         reply_markup=InlineKeyboardMarkup(
             [
-                [InlineKeyboardButton(f"{i18n('delete_bot')}", callback_data=f'mbd_{bot_id}')],
+                [InlineKeyboardButton(f'{i18n("delete_bot")}', callback_data=f'mbd_{bot_id}')],
                 [
                     InlineKeyboardButton(
-                        f"{i18n('change_bot_token')}", callback_data=f'mbt_{bot_id}'
+                        f'{i18n("change_bot_token")}', callback_data=f'mbt_{bot_id}'
                     )
                 ],
                 [
                     InlineKeyboardButton(
-                        f"{i18n('change_bot_group')}", callback_data=f'mbg_{bot_id}'
+                        f'{i18n("change_bot_group")}', callback_data=f'mbg_{bot_id}'
                     )
                 ],
                 [
                     InlineKeyboardButton(
-                        f"{i18n('bot_confirmations')}", callback_data=f'mbc_{bot_id}'
+                        f'{i18n("bot_confirmations")}', callback_data=f'mbc_{bot_id}'
                     )
                 ],
                 [
                     InlineKeyboardButton(
-                        f"{i18n('change_bot_start_message')}", callback_data=f'mbm_{bot_id}'
+                        f'{i18n("change_bot_start_message")}', callback_data=f'mbm_{bot_id}'
                     )
                 ],
                 [
                     InlineKeyboardButton(
-                        f"{i18n('change_bot_receive_message')}", callback_data=f'mbrc_{bot_id}'
+                        f'{i18n("change_bot_receive_message")}', callback_data=f'mbrc_{bot_id}'
                     )
                 ],
-                [
-                    InlineKeyboardButton(
-                        f"{i18n('change_bot_sent_message')}", callback_data=f'mbsm_{bot_id}'
-                    )
-                ],
-                [InlineKeyboardButton(f"{i18n('back_to_main_menu')}", callback_data='main')],
+                [InlineKeyboardButton(f'{i18n("back_to_main_menu")}', callback_data='main')],
             ]
         ),
     )
@@ -136,10 +131,10 @@ async def change_group(_: Client, update: CallbackQuery, i18n: Plate) -> None:
             [
                 [
                     InlineKeyboardButton(
-                        f"{i18n('unlink_bot_from_group')}", callback_data=f'mbgu_{bot_id}'
+                        f'{i18n("unlink_bot_from_group")}', callback_data=f'mbgu_{bot_id}'
                     )
                 ],
-                [InlineKeyboardButton(f"{i18n('back_to_main_menu')}", callback_data='main')],
+                [InlineKeyboardButton(f'{i18n("back_to_main_menu")}', callback_data='main')],
             ]
         ),
     )
@@ -201,7 +196,7 @@ async def change_token(_: Client, update: CallbackQuery, i18n: Plate) -> None:
 
 
 # TODO refactor to use replymarkup with emoji to allow force reply
-@Client.on_callback_query(is_whitelisted_user() & filters.regex(r'^mb(?:m|rc|sm)_\d+$'))
+@Client.on_callback_query(is_whitelisted_user() & filters.regex(r'^mb(?:m|rc)_\d+$'))
 @tg_exceptions_handler
 @localize
 async def reply_with_message(_: Client, update: CallbackQuery, i18n: Plate) -> None:
@@ -220,7 +215,6 @@ async def reply_with_message(_: Client, update: CallbackQuery, i18n: Plate) -> N
 message_type_to_key: dict[str, str] = {
     'm': 'start_message',
     'rc': 'received_message',
-    'sm': 'sent_message',
 }
 
 
